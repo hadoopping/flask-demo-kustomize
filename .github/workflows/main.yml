@@ -36,9 +36,9 @@ jobs:
       - name: kustomize edit
         if: ${{ github.event.inputs.image }}
         run: |
-          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash cp -a /home/runner/work/flask-demo-kustomize/flask-demo-kustomize/kustomize /home/runner/work/flask-demo-kustomize/flask-demo-kustomize/secret/ |bash
-          /home/runner/work/flask-demo-kustomize/flask-demo-kustomize/secret/kustomize edit set image ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}
-          rm -f kustomize /home/runner/work/flask-demo-kustomize/flask-demo-kustomize/secret/kustomize
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash 
+          kustomize edit set image ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}
+          rm -f kustomize 
       
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v2
